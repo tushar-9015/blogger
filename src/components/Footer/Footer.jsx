@@ -4,7 +4,7 @@ import Logo from "../Logo";
 
 const Footer = () => {
   return (
-    <section className="relative overflow-hidden py-10 bg-gray-400">
+    <section className="relative overflow-hidden py-10 bg-[#CBDFCE]">
       <div className="relative z-10 mx-auto max-w-7xl px-4">
         <div className="-m-6 flex flex-wrap">
           <div className="w-full p-6 md:w-1/2 lg:w-5/12">
@@ -29,7 +29,7 @@ const Footer = () => {
               <ul>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium] hover:text-[#9ED5CB]"
+                    className=" text-base font-medium] hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Features
@@ -37,7 +37,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium] hover:text-[#9ED5CB]"
+                    className=" text-base font-medium] hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Pricing
@@ -45,7 +45,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium hover:text-[#9ED5CB]"
+                    className=" text-base font-medium hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Affiliate Program
@@ -53,7 +53,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className=" text-base font-medium hover:text-[#9ED5CB]"
+                    className=" text-base font-medium hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Press Kit
@@ -70,7 +70,7 @@ const Footer = () => {
               <ul>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium hover:text-[#9ED5CB]"
+                    className=" text-base font-medium hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Account
@@ -78,7 +78,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium  hover:text-[#9ED5CB]"
+                    className=" text-base font-medium hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Help
@@ -86,7 +86,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium  hover:text-[#9ED5CB]"
+                    className=" text-base font-medium  hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Contact Us
@@ -94,7 +94,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className=" text-base font-medium  hover:text-[#9ED5CB]"
+                    className=" text-base font-medium  hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Customer Support
@@ -111,7 +111,7 @@ const Footer = () => {
               <ul>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium  hover:text-[#9ED5CB]"
+                    className=" text-base font-medium  hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Terms &amp; Conditions
@@ -119,7 +119,7 @@ const Footer = () => {
                 </li>
                 <li className="mb-4">
                   <Link
-                    className=" text-base font-medium  hover:text-[#9ED5CB]"
+                    className=" text-base font-medium  hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Privacy Policy
@@ -127,7 +127,7 @@ const Footer = () => {
                 </li>
                 <li>
                   <Link
-                    className=" text-base font-medium hover:text-[#9ED5CB]"
+                    className=" text-base font-medium hover:text-[#B4CCEB]"
                     to="/"
                   >
                     Licensing

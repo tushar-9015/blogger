@@ -43,12 +43,12 @@ const Header = () => {
   ];
 
   return (
-    <header className="py-3 shadow sticky top-0 z-20 flex items-center h-20 bg-gray-400">
+    <header className="py-3 shadow-[#CBDFCE] sticky top-0 z-20 flex items-center h-20 bg-[#CBDFCE]">
       <Container>
         <nav className="flex items-center">
           <div className="mr-4">
-            <Link>
-              <Logo width="90px" />
+            <Link to="/">
+              <Logo width="90%" />
             </Link>
           </div>
           <div onClick={handleMenu} className="ml-auto block lg:hidden">
@@ -57,7 +57,7 @@ const Header = () => {
           <ul
             className={`${
               isMenuOpen ? "flex" : "hidden"
-            } lg:flex max-lg:w-full lg:flex-row flex-col items-center ml-auto py-2 lg:py-0 absolute top-20 right-1 lg:static bg-gray-400 shadow-lg rounded lg:shadow-none lg:rounded-none`}
+            } lg:flex max-lg:w-full lg:flex-row flex-col items-center ml-auto py-2 lg:py-0 absolute top-20 right-1 lg:static bg-[#CBDFCE] shadow-lg-[#CBDFCE] rounded lg:shadow-none lg:rounded-none`}
           >
             {navItems.map((item) =>
               item.active ? (
@@ -68,8 +68,8 @@ const Header = () => {
                       setIsMenuOpen(false);
                     }}
                     className={`inline-block font-semibold px-6 py-2 duration-300 ${
-                      pathName === item.slug ? "bg-[#9ED5CB] text-black" : ""
-                    } hover:bg-[#9ED5CB] hover:text-black rounded-full`}
+                      pathName === item.slug ? "bg-[#B4CCEB] text-black" : ""
+                    } hover:bg-[#B4CCEB] hover:text-black rounded-full`}
                   >
                     {item.name}
                   </button>

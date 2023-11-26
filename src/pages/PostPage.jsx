@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import fileService from "../appwrite/file";
 import toast from "react-hot-toast";
 import { getAllPost } from "../store/slices/postSlice";
+import HomePage from "./HomePage";
 
 const Post = () => {
   const [post, setPost] = useState(null);
@@ -46,8 +47,8 @@ const Post = () => {
       });
       toast.dismiss();
       toast.success("Deleted Post");
-      dispatch(getAllPost());
-      navigate("/my-posts");
+      // dispatch(getAllPost());
+      navigate("/");
     } catch (error) {
       toast.error(error.message);
     }

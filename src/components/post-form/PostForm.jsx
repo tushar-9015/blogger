@@ -1,12 +1,13 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Button, Input, RTE, Select } from "..";
 import postService from "../../appwrite/post";
 import fileService from "../../appwrite/file";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { upsertPost } from "../../store/slices/postSlice";
 
-export default function PostForm({ post }) {
+export default function PostForm({ post, isEdit = false }) {
   let defaults = {
     title: post?.title || "",
     slug: post?.$id || "",
@@ -17,15 +18,22 @@ export default function PostForm({ post }) {
     useForm({
       defaultValues: defaults,
     });
+  const [submitting, setSubmitting] = useState(false);
 
   const navigate = useNavigate();
   const userData = useSelector((state) => state.auth.userData);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     reset(defaults);
   }, [post, reset]);
 
   const submit = async (data) => {
+    if (submitting) {
+      return;
+    }
+    setSubmitting(true);
     console.log(data);
     if (post) {
       const file = data.image[0]
@@ -43,6 +51,7 @@ export default function PostForm({ post }) {
       });
 
       if (dbPost) {
+        dispatch(upsertPost({ post: dbPost }));
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
@@ -57,10 +66,12 @@ export default function PostForm({ post }) {
         });
 
         if (dbPost) {
+          dispatch(upsertPost({ post: dbPost }));
           navigate(`/post/${dbPost.$id}`);
         }
       }
     }
+    setSubmitting(false);
   };
 
   const slugTransform = useCallback((value) => {
@@ -76,7 +87,7 @@ export default function PostForm({ post }) {
 
   React.useEffect(() => {
     const subscription = watch((value, { name }) => {
-      if (name === "title") {
+      if (name === "title" && !isEdit) {
         setValue("slug", slugTransform(value.title), { shouldValidate: true });
       }
     });
@@ -85,25 +96,33 @@ export default function PostForm({ post }) {
   }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
+    <form
+      onSubmit={handleSubmit(submit)}
+      className="flex flex-wrap"
+      disabled={submitting}
+    >
       <div className="w-2/3 px-2">
         <Input
           label="Title :"
           placeholder="Title"
           className="mb-4"
+          name="title"
           {...register("title", { required: true })}
         />
-        <Input
+        {/* <Input
           label="Slug :"
           placeholder="Slug"
           className="mb-4"
+          name="slug"
+          disabled={isEdit}
           {...register("slug", { required: true })}
           onInput={(e) => {
+            console.log(e);
             setValue("slug", slugTransform(e.currentTarget.value), {
               shouldValidate: true,
             });
           }}
-        />
+        /> */}
         <RTE
           label="Content :"
           name="content"
@@ -135,6 +154,7 @@ export default function PostForm({ post }) {
           {...register("status", { required: true })}
         />
         <Button
+          disabled={submitting}
           type="submit"
           bgColor={post ? "bg-green-500" : undefined}
           className="w-full"
