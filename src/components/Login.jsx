@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import login from "../store/slices/authSlice";
+import { login as authLogin } from "../store/slices/authSlice";
 import { Button, Input, Logo } from "./index";
 import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
@@ -19,12 +19,10 @@ const Login = () => {
       toast.loading("Logging in");
       const session = await authService.login(data);
       toast.dismiss();
-      toast.success("User logged in");
       if (session) {
         const userData = await authService.getCurrentUser();
-        if (userData) {
-          dispatch(login(userData));
-        }
+        if (userData) return dispatch(authLogin(userData));
+        toast.success("User logged in");
         navigate("/");
       }
     } catch (error) {
@@ -39,7 +37,7 @@ const Login = () => {
           "mx-auto w-full max-w-lg  bg-gray-100 rounded-xl p-10 border border-black/10"
         }
       >
-        <div className="mb-2 flex justify-center">
+        <div className="mb-2 flex justify-center mr-10">
           <span className="inline-block w-full max-w-[100px]">
             <Logo width="100%" />
           </span>
@@ -83,8 +81,8 @@ const Login = () => {
             />
             <Button
               type="submit"
-              className="w-full font-semibold hover:border-[#9ED5CB] hover:bg-[#8adfd0]"
-              bgColor="bg-[#9ED5CB]"
+              className="w-full font-semibold hover:border-[#9acea0] hover:bg-[#9acea0]"
+              bgColor="bg-[#aedfb4]"
               textColor="text-black"
             >
               Sign in

@@ -11,7 +11,9 @@ const MyPostPage = () => {
 
   useEffect(() => {
     if (allPosts) {
-      const filteredPost = allPosts.filter((post) => post.$id != userData.$id);
+      const filteredPost = allPosts.filter(
+        (post) => post.userId === userData.$id
+      );
       setMyPosts(filteredPost);
       console.log(allPosts);
       console.log(filteredPost);

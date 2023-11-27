@@ -28,7 +28,7 @@ const LogoutBtn = () => {
     <Button
       bgColor="bg-[#9ED5CB]"
       textColor="text-black"
-      className="bg-transparent border-transparent"
+      className="bg-transparent border-none"
       onClick={logoutHandler}
     >
       <FiLogOut size={23} className="text-black dark:text-white" />
